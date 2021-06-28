@@ -57,6 +57,28 @@ There are two types of build profiles: generic and managed.
 
 The schema of a build profile for a generic Android project looks like this:
 
+<table>
+    <thead>
+      <tr>
+        <td>Property</td>
+        <td>Description</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div>
+`extends`
+
+</div>
+        </td>
+        <td>
+          <div>allows extending values from another build profile.</div>
+        </td>
+      </tr>
+    </tbody>
+</table>
+
 ```json
 {
   "workflow": "generic",
