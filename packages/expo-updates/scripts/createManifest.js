@@ -121,7 +121,6 @@ function getBasePath(asset) {
 async function fetchAssetManifestAsync(platform, projectRoot, entryFile, metroConfig) {
   // Project-level babel config does not load unless we change to the
   // projectRoot before instantiating the server
-
   process.chdir(projectRoot);
 
   const server = new Server(metroConfig);
