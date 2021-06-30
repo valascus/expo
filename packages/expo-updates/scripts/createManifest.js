@@ -12,6 +12,9 @@ const filterPlatformAssetScales = require('./filterPlatformAssetScales');
   const destinationDir = process.argv[4];
   const entryFile = process.env.ENTRY_FILE || 'index.js';
 
+  // remove any relative '..' segments from project root
+  projectRoot = resolve(projectRoot);
+
   // Remove projectRoot validation when we no longer support React Native <= 62
   let projectRoot;
   if (fs.existsSync(path.join(possibleProjectRoot, entryFile))) {
@@ -118,6 +121,7 @@ function getBasePath(asset) {
 async function fetchAssetManifestAsync(platform, projectRoot, entryFile, metroConfig) {
   // Project-level babel config does not load unless we change to the
   // projectRoot before instantiating the server
+
   process.chdir(projectRoot);
 
   const server = new Server(metroConfig);
