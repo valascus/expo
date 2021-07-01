@@ -12,9 +12,6 @@ const filterPlatformAssetScales = require('./filterPlatformAssetScales');
   const destinationDir = process.argv[4];
   const entryFile = process.env.ENTRY_FILE || 'index.js';
 
-  // remove any relative '..' segments from project root
-  projectRoot = resolve(projectRoot);
-
   // Remove projectRoot validation when we no longer support React Native <= 62
   let projectRoot;
   if (fs.existsSync(path.join(possibleProjectRoot, entryFile))) {
@@ -22,6 +19,9 @@ const filterPlatformAssetScales = require('./filterPlatformAssetScales');
   } else if (fs.existsSync(path.join(possibleProjectRoot, '..', entryFile))) {
     projectRoot = path.resolve(possibleProjectRoot, '..');
   }
+
+  // remove any relative '..' segments from project root
+  projectRoot = path.resolve(projectRoot);
 
   let metroConfig;
   try {
